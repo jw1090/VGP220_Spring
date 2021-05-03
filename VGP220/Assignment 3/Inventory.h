@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Item.h"
 
+
 class Inventory
 {
 public:
@@ -62,6 +63,8 @@ public:
 		mInventory = nullptr;
 	}
 
+
+	//ERROR: -2. If the elements are equal you don't assign.
 	//TODO: Implement a copy assignment operator
 	Inventory& operator=(const Inventory& rhs)
 	{
@@ -78,6 +81,7 @@ public:
 		return *this;
 	}
 
+	//ERROR: -2. If the elements are equal, you don't move.
 	//TODO: Implement a move assignment operator
 	Inventory& operator=(Inventory&& rhs)
 	{
@@ -162,6 +166,8 @@ public:
 		}
 	}
 
+	//COMMENT: It works fine but you overcomplicated this part. So many unecessary if statements. Pay attention 
+	//on this next time, to optimize a little bit more your code.
 	void RemoveItem(std::string itemName, int quantity)
 	{
 		//TODO: Implement RemoveItem method

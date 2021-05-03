@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Inventory.h"
 
+//Grade: 96/100
+
 int main(int argc, char* argv[])
 {
 	Item hps{ "Healing Potion", 12, ItemType::Potion };
@@ -22,7 +24,7 @@ int main(int argc, char* argv[])
 	inventory_2.AddItem(hps);
 	inventory_2.AddItem(hps);
 	inventory_2.AddItem(hps);
-
+	inventory_2.AddItem(poisonPotion);
 	//inventory_2.ShowInventory();
 
 	//Testing remove small quantity 

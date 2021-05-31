@@ -21,6 +21,13 @@ int main(int argc, char* argv[])
 	priorityQueue.Enqueue({ 63, "Caroline Wilson" });
 	priorityQueue.Enqueue({ 84, "Chloe Marshall" });
 
+	for (int i = 0; i < 10; ++i)
+	{
+		std::cout << priorityQueue.GetArray()[i].data << ": " << priorityQueue.GetArray()[i].priority << std::endl;
+	}
+
+	std::cout << "\n\n";
+
 	PriorityQueue<std::string>::Data first5[5] =
 	{
 		priorityQueue.Dequeue(),
@@ -30,17 +37,11 @@ int main(int argc, char* argv[])
 		priorityQueue.Dequeue()
 	};
 
-	/*
-	for (int i = 0; i < 10; ++i)
-	{
-		std::cout << priorityQueue.mDataArray[i].data << ": " << priorityQueue.mDataArray[i].priority << std::endl;
-	}
-	*/
 
 	std::cout << "Top 5 students and grades:\n";
 	for (int i = 0; i < 5; ++i)
 	{
-		std::cout << i + 1 << ") " << first5->data << " " << first5->priority << "\n";
+		std::cout << i + 1 << ") " << first5[i].data << " " << first5[i].priority << "\n";
 	}
 	//EXPECTED:
 	//Top 5 students and grades:

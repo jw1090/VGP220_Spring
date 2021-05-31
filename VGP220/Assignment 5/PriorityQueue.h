@@ -14,7 +14,10 @@ public:
 		T data;
 	};
 
-	
+	Data* GetArray()
+	{
+		return mDataArray;
+	}
 
 	PriorityQueue(Data emptyValue)
 		: mCapacity(10)
@@ -129,26 +132,29 @@ private:
 		//Remember:
 		//Heapfy: In a loop, checks which one is bigger in priority between left and right. and select.
 		//Then compares with it's priority. If parent priority is smaller, Swap.
-
+		
 		int leftIndex = GetLeft(index);
 		int rightIndex = GetRight(index);
-		int smallest = index;
+		int biggest = index;
 
-		if (leftIndex < mSize - 1 && mDataArray[leftIndex].priority < mDataArray[smallest].priority)
+		while (biggest != index)
 		{
-			smallest = leftIndex;
-		}
+			if (leftIndex < mSize - 1 && mDataArray[leftIndex].priority > mDataArray[biggest].priority)
+			{
+				biggest = leftIndex;
+			}
 
-		if (rightIndex < mSize - 1 && mDataArray[rightIndex].priority < mDataArray[smallest].priority)
-		{
-			smallest = rightIndex;
-		}
+			if (rightIndex < mSize - 1 && mDataArray[rightIndex].priority > mDataArray[biggest].priority)
+			{
+				biggest = rightIndex;
+			}
 
-		if (smallest != index)
-		{
-			Swap(&mDataArray[index], &mDataArray[smallest]);
+			if (biggest != index)
+			{
+				Swap(&mDataArray[index], &mDataArray[biggest]);
 
-			Heapfy(smallest);
+				Heapfy(biggest);
+			}
 		}
 	}
 

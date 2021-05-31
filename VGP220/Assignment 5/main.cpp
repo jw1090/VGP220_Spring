@@ -30,6 +30,12 @@ int main(int argc, char* argv[])
 		priorityQueue.Dequeue()
 	};
 
+	/*
+	for (int i = 0; i < 10; ++i)
+	{
+		std::cout << priorityQueue.mDataArray[i].data << ": " << priorityQueue.mDataArray[i].priority << std::endl;
+	}
+	*/
 
 	std::cout << "Top 5 students and grades:\n";
 	for (int i = 0; i < 5; ++i)

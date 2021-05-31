@@ -8,12 +8,13 @@ class PriorityQueue
 {
 
 public:
-
 	struct Data
 	{
 		int priority;
 		T data;
 	};
+
+	
 
 	PriorityQueue(Data emptyValue)
 		: mCapacity(10)
@@ -55,8 +56,8 @@ public:
 		mDataArray[mSize] = data;
 		int i = mSize;
 		++mSize;
-
-		while (i != 0 && mDataArray[GetParent(i)].priority > mDataArray[i].priority)
+		
+		while (i != 0 && mDataArray[GetParent(i)].priority < mDataArray[i].priority)
 		{
 			Swap(&mDataArray[GetParent(i)], &mDataArray[i]);
 			i = GetParent(i);
@@ -77,24 +78,22 @@ public:
 		//element from your array. After this, Heapfy.
 		//If the queue is empty, return mEmptyValue
 
-		if (mSize == 0)
+		if (mSize != 0)
 		{
-			return mEmptyValue;
-		}
+			--mSize;
+			if (mSize == 0)
+			{
+				return mDataArray[0];
+			}
 
-		--mSize;
-
-		Data temp = mDataArray[0];
-
-		if (mSize > 0)
-		{
+			Data temp = mDataArray[0];
 			mDataArray[0] = mDataArray[mSize];
-			mDataArray[mSize] = mEmptyValue;
-
 			Heapfy(0);
+
+			return temp;
 		}
 
-		return temp;
+		return INT_MAX;
 	}
 
 	int GetSize() const
@@ -119,12 +118,10 @@ private:
 	}
 
 	void Swap(Data* a, Data* b)
-	{
-		
+	{	
 		Data temp = *a;
 		*a = *b;
 		*b = temp;
-		
 	}
 
 	void Heapfy(int index)

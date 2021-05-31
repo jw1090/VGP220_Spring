@@ -78,20 +78,19 @@ public:
 		//element from your array. After this, Heapfy.
 		//If the queue is empty, return mEmptyValue
 
-		if (mSize != 0)
+		if (mSize == 0)
 		{
-			--mSize;
-			if (mSize == 0)
-			{
-				return mDataArray[0];
-			}
-
-			Data temp = mDataArray[0];
-			mDataArray[0] = mDataArray[mSize];
-			Heapfy(0);
-
-			return temp;
+			return mEmptyValue;
 		}
+
+		--mSize;
+
+		Data temp = mDataArray[0];
+		mDataArray[0] = mDataArray[mSize];
+		mDataArray[mSize] = mEmptyValue;
+		Heapfy(0);
+
+		return temp;
 
 	}
 
@@ -148,6 +147,7 @@ private:
 		if (smallest != index)
 		{
 			Swap(&mDataArray[index], &mDataArray[smallest]);
+
 			Heapfy(smallest);
 		}
 	}

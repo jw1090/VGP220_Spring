@@ -93,7 +93,6 @@ public:
 			return temp;
 		}
 
-		return INT_MAX;
 	}
 
 	int GetSize() const

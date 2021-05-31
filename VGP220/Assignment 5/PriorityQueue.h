@@ -137,24 +137,21 @@ private:
 		int rightIndex = GetRight(index);
 		int biggest = index;
 
-		while (biggest != index)
+		if (leftIndex < mSize - 1 && mDataArray[leftIndex].priority > mDataArray[biggest].priority)
 		{
-			if (leftIndex < mSize - 1 && mDataArray[leftIndex].priority > mDataArray[biggest].priority)
-			{
-				biggest = leftIndex;
-			}
+			biggest = leftIndex;
+		}
 
-			if (rightIndex < mSize - 1 && mDataArray[rightIndex].priority > mDataArray[biggest].priority)
-			{
-				biggest = rightIndex;
-			}
+		if (rightIndex < mSize - 1 && mDataArray[rightIndex].priority > mDataArray[biggest].priority)
+		{
+			biggest = rightIndex;
+		}
 
-			if (biggest != index)
-			{
-				Swap(&mDataArray[index], &mDataArray[biggest]);
+		if (biggest != index)
+		{
+			Swap(&mDataArray[index], &mDataArray[biggest]);
 
-				Heapfy(biggest);
-			}
+			Heapfy(biggest);
 		}
 	}
 

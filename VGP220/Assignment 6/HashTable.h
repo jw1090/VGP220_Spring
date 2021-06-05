@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <list>
 
@@ -101,7 +102,7 @@ public:
 			hash += key[i];
 		}
 		hash *= seed;
-		return hash % mCapacity;
+		return hash % 5;
 	}
 
 	void Insert(const std::string& key, T value)
@@ -109,7 +110,32 @@ public:
 		//Task 4: This is the hardest method to be implemented. You will need to hash 2 times.
 		// Make sure to find two indices (Using your hash functions) and insert to the next available position. If you don't 
 		//	have an available position, print a message to the user saying:
-		// "Element cannot be inserted. Bucket at index %s is full." %s = hashIndex. 
+		// "Element cannot be inserted. Bucket at index %s is full." %s = hashIndex.
+		
+		if (key.empty())
+		{
+			std::count << "This map cannot store empty keys\n";
+			return;
+		}
+		if (mCurrentSize == mCapactiy)
+		{
+			std::count << "This map is full";
+			return;
+		}
+
+		int hashIndex1 = Hash(key);
+		int hashIndex2 = Hash2(key);
+
+		if (mData[hashIndex1].key.empty())
+		{
+			mData[hashIndex1][hashIndex2].key = key;
+			mData[hashIndex1][hashIndex2].value = value;
+			++mCurrentSize;
+			return;
+		}
+
+		//If failed
+		std::cout << "Your key " << key << " has a collision with " << mData[hashIndex1][hashIndex2].key << std::endl;
 	}
 
 private:

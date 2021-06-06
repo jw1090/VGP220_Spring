@@ -2,6 +2,8 @@
 #include <string>
 #include "PriorityQueue.h"
 
+//Grade: 100 / 100
+
 //This test will use a priority queue to sort the students by it's grades(priority).
 //Students names will be the data.
 //Students with greater grade should leave the queue first.

@@ -3,6 +3,8 @@
 #include <string>
 #include <list>
 
+//Grade: 100/100. Very simple and understandable implementation. Good job!
+
 //Solve collision with chaining
 //This Dictionary does not allows similar keys.
 
